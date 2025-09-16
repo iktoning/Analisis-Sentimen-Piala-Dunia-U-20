@@ -4,7 +4,7 @@ menggunakan **Genetic Algorithm untuk seleksi fitur** + **Naive Bayes**.
 ## Cara Menjalankan di Lokal
 
 1. Buka terminal
-2. Ketik git clone https://github.com/username/sentiment-piala-dunia.git
+2. Ketik git clone https://github.com/iktoning/sentiment-piala-dunia.git
 3. Ketik cd sentiment-piala-dunia
 4. Ketik pip install -r requirements.txt
 5. Ketik python app.py

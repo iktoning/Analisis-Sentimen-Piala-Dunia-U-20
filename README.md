@@ -1,4 +1,4 @@
-Project analisis sentimen (Positif / Negatif) terhadap pembatalan piala dunia U-2o di Indonesia dari teks atau file CSV
+Project analisis sentimen (Positif / Negatif) terhadap pembatalan piala dunia U-20 di Indonesia dari teks atau file CSV
 menggunakan **Genetic Algorithm untuk seleksi fitur** + **Naive Bayes**.
 
 ## Cara Menjalankan di Lokal

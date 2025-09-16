@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Analisis Sentimen</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1>⚽ Analisis Sentimen Piala U-20 Indonesia🏆</h1>
+      <p>
+        Masukkan teks atau upload file CSV tentang Piala Dunia untuk melihat
+        analisis sentimen fans!
+      </p>
+    </div>
+
+    <div class="container">
+      <!-- Input teks -->
+      <div class="card">
+        <h2>📝 Analisis Teks</h2>
+        <textarea id="inputText" placeholder="Masukkan teks"></textarea>
+        <button id="analyzeBtn">Analisis</button>
+        <div id="result" class="result"></div>
+      </div>
+
+      <!-- Input CSV -->
+      <div class="card">
+        <h2>📂 Analisis CSV</h2>
+        <input type="file" id="csvFile" accept=".csv" />
+        <button id="uploadBtn">Upload & Analisis</button>
+        <div id="tableResult"></div>
+        <a id="downloadLink" style="display: none" href="#"
+          >Download Hasil CSV</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p>Analisis Sentimen Fans Sepak Bola</p>
+    </footer>
+
+    <script>
+      // Analisis teks
+      document
+        .getElementById("analyzeBtn")
+        .addEventListener("click", async () => {
+          const text = document.getElementById("inputText").value;
+          if (!text) return alert("Masukkan teks dulu!");
+
+          const response = await fetch("/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text }),
+          });
+
+          const data = await response.json();
+          const resultDiv = document.getElementById("result");
+          resultDiv.innerHTML = `<div class="score-card">${data.sentiment}</div>`;
+          resultDiv.style.color =
+            data.sentiment === "Positif" ? "#28a745" : "#dc3545";
+        });
+
+      // Analisis CSV
+      document
+        .getElementById("uploadBtn")
+        .addEventListener("click", async () => {
+          const fileInput = document.getElementById("csvFile");
+          if (!fileInput.files.length) return alert("Pilih file CSV dulu!");
+
+          const formData = new FormData();
+          formData.append("file", fileInput.files[0]);
+
+          const response = await fetch("/analyze_csv", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+          if (data.error) {
+            alert(data.error);
+            return;
+          }
+
+          // Tampilkan tabel hasil
+          let tableHTML = "<table class='scoreboard'><thead><tr>";
+          data.columns.forEach((col) => (tableHTML += `<th>${col}</th>`));
+          tableHTML += "</tr></thead><tbody>";
+
+          data.data.forEach((row) => {
+            tableHTML += "<tr>";
+            row.forEach((val) => (tableHTML += `<td>${val}</td>`));
+            tableHTML += "</tr>";
+          });
+
+          tableHTML += "</tbody></table>";
+          document.getElementById("tableResult").innerHTML = tableHTML;
+
+          // Link download
+          const dl = document.getElementById("downloadLink");
+          dl.href = data.download_link;
+          dl.style.display = "inline-block";
+        });
+    </script>
+  </body>
+</html>

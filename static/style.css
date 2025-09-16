@@ -1,0 +1,135 @@
+/* Background stadion */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #11998e, #38ef7d);
+  border-bottom: 5px solid gold;
+}
+.header h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+  color: gold;
+  text-shadow: 2px 2px #000;
+}
+.header p {
+  font-size: 1.2em;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  background: #ffffffdd;
+  color: #333;
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: scale(1);
+}
+
+/* Textarea */
+textarea {
+  width: 97%;
+  height: 120px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #38ef7d;
+  resize: none;
+  font-size: 16px;
+}
+
+/* Button */
+button {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s, background 0.3s;
+}
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+}
+
+/* Hasil sebagai kartu skor */
+.score-card {
+  margin-top: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #38ef7d, #11998e);
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Tabel scoreboard */
+table.scoreboard {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+}
+.scoreboard th,
+.scoreboard td {
+  border: 2px solid #333;
+  padding: 10px;
+  text-align: center;
+}
+.scoreboard th {
+  background: gold;
+  color: black;
+  font-weight: bold;
+}
+.scoreboard tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+/* Download link */
+#downloadLink {
+  margin-top: 15px;
+  display: block;
+  background: gold;
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+}
+#downloadLink:hover {
+  background: #ffd700;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: gold;
+  font-size: 14px;
+  margin-top: 30px;
+  background: rgba(0, 0, 0, 0.6);
+}
